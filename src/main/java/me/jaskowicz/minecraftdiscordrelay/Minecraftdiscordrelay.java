@@ -25,6 +25,12 @@ import java.util.Objects;
 
 public final class Minecraftdiscordrelay extends JavaPlugin {
 
+    // This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+    // To view a copy of this license,
+    // visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+    // Created by: Archie Jaskowicz.
+
     private static final org.apache.logging.log4j.core.Logger logger = (org.apache.logging.log4j.core.Logger) LogManager.getRootLogger();
 
     public static String discordBotToken = "";
