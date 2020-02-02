@@ -1,0 +1,8 @@
+name: MinecraftDiscordRelay
+version: 1.0
+main: me.jaskowicz.minecraftdiscordrelay.Minecraftdiscordrelay
+api-version: 1.13
+prefix: MinecraftDiscordRelay(MCDR)
+load: STARTUP
+authors: [ArchieJaskowicz]
+description: A plugin which allows your server to communicate to discord via webhooks!

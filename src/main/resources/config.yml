@@ -1,0 +1,5 @@
+main:
+  botToken: "changethis"
+  consoleChannelID: "changethis"
+  chatChannelID: "changethis"
+  guildID: "changethis"

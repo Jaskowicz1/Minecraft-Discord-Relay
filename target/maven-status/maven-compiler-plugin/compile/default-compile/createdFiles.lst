@@ -1,0 +1,9 @@
+me\jaskowicz\minecraftdiscordrelay\Minecraftdiscordrelay.class
+me\jaskowicz\minecraftdiscordrelay\Listeners\CommandEvent.class
+me\jaskowicz\minecraftdiscordrelay\Utils\FormatUtils.class
+me\jaskowicz\minecraftdiscordrelay\Listeners\PlayerConnections.class
+me\jaskowicz\minecraftdiscordrelay\Utils\LogAppender.class
+me\jaskowicz\minecraftdiscordrelay\Minecraftdiscordrelay$1.class
+me\jaskowicz\minecraftdiscordrelay\Utils\DiscordUtils.class
+me\jaskowicz\minecraftdiscordrelay\Listeners\ChatListener.class
+me\jaskowicz\minecraftdiscordrelay\Listeners\MessageListener.class
