@@ -25,13 +25,22 @@ Versions it may work for: 1.7.x - 1.15.x
 
 # Installation
 
-Download the latest .jar from the releases tab or head on over to the spigot page: <spigot_page>.
+Download the latest .jar from the releases tab or head on over to the spigot page: https://www.spigotmc.org/threads/minecraft-discord-relay-mcdr.415845/.
 
 Once downloaded, place it within your plugins folder located within your server's directory (folder) and run the server. You'll get an error stating that it failed to load, this means that it has created its config file. Go into the config file and edit the values.
 
 Make sure your discord bot is in your server and has permissions to see and chat in the channels (ID form) you gave it.
 
 Once those values are edited correctly, save the config and run the server. If everything is setup correctly, you should see the bot come online and start talking!
+
+
+---
+
+
+# Usage
+
+When everything is setup, you can talk in the chat channel you specified to talk in-game via discord.
+You can also talk in the console channel you specified to execute commands in the console via discord.
 
 
 ---
