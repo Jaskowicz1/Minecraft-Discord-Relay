@@ -1,7 +1,7 @@
 # Minecraft-Discord-Relay
 Minecraft-Discord-Relay (MCDR) is a plugin for Minecraft (spigot) which allows you to connect your server to discord (using a webhook) and relay information from Minecraft to Discord.
 
-Tested minecraft version: 1.15
+Tested minecraft version: 1.13 - 1.15
 
 Versions it may work for: 1.7.x - 1.15.x
 (If these version are inaccurate, inform me and I will do my best to either add a dependency for that version or change the message above depending on how many people want it for x version).
