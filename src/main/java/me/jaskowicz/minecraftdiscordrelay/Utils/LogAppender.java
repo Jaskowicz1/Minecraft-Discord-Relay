@@ -63,6 +63,12 @@ public class LogAppender extends AbstractAppender {
                     if(Minecraftdiscordrelay.advancedConsole) {
                         Objects.requireNonNull(Objects.requireNonNull(Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)).getTextChannelById(Minecraftdiscordrelay.consoleChannelID))
                                 .sendMessage(message).queue();
+                    } else {
+                        if (message.contains("Unknown command. Type \"/help\" for help.")) {
+                            Objects.requireNonNull(Objects.requireNonNull(Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)).getTextChannelById(Minecraftdiscordrelay.consoleChannelID))
+                                    .sendMessage("::warning: Unknown command. Type \"/help\" for help.").queue();
+
+                        }
                     }
                 }
             }
