@@ -1,4 +1,9 @@
+D:\Intellij Projects\MinecraftDiscordRelay\src\main\java\me\jaskowicz\minecraftdiscordrelay\Listeners\MessageListener.java
+D:\Intellij Projects\MinecraftDiscordRelay\src\main\java\me\jaskowicz\minecraftdiscordrelay\Listeners\ChatListener.java
 D:\Intellij Projects\MinecraftDiscordRelay\src\main\java\me\jaskowicz\minecraftdiscordrelay\Minecraftdiscordrelay.java
 D:\Intellij Projects\MinecraftDiscordRelay\src\main\java\me\jaskowicz\minecraftdiscordrelay\Utils\FormatUtils.java
 D:\Intellij Projects\MinecraftDiscordRelay\src\main\java\me\jaskowicz\minecraftdiscordrelay\Utils\LogAppender.java
 D:\Intellij Projects\MinecraftDiscordRelay\src\main\java\me\jaskowicz\minecraftdiscordrelay\Utils\DiscordUtils.java
+D:\Intellij Projects\MinecraftDiscordRelay\src\main\java\me\jaskowicz\minecraftdiscordrelay\Listeners\OnDeathEvent.java
+D:\Intellij Projects\MinecraftDiscordRelay\src\main\java\me\jaskowicz\minecraftdiscordrelay\Listeners\PlayerConnections.java
+D:\Intellij Projects\MinecraftDiscordRelay\src\main\java\me\jaskowicz\minecraftdiscordrelay\Listeners\CommandEvent.java

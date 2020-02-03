@@ -33,18 +33,19 @@ public class MessageListener extends ListenerAdapter {
         if (event.getChannelType().equals(ChannelType.TEXT)) {
             if(event.getGuild().getId().equals(Minecraftdiscordrelay.guildID)) {
                 if(event.getChannel().getId().equals(Minecraftdiscordrelay.consoleChannelID)) {
-                    System.out.println(event.getMessage().getContentDisplay());
+                    System.out.println(event.getMessage().getContentRaw());
                     try {
 
                         if(event.getMessage().getContentRaw().equals("stop")) {
                             Objects.requireNonNull(Objects.requireNonNull(Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)).getTextChannelById(Minecraftdiscordrelay.consoleChannelID))
                                     .sendMessage(":x: Server closing.").queue();
-                        } else if(event.getMessage().getContentRaw().equals("help")) {
+                        }
+
+                        if(Minecraftdiscordrelay.disabledCommands.contains(event.getMessage().getContentRaw())) {
                             Objects.requireNonNull(Objects.requireNonNull(Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)).getTextChannelById(Minecraftdiscordrelay.consoleChannelID))
-                                    .sendMessage(":x: This command is disabled to prevent spam.").queue();
+                                    .sendMessage(":x: This command is disabled.").queue();
 
                             return;
-
                         }
 
                         boolean success = Bukkit.getScheduler().callSyncMethod( plugin, () -> Bukkit.dispatchCommand( Bukkit.getConsoleSender(), event.getMessage().getContentRaw() ) ).get();
@@ -52,8 +53,11 @@ public class MessageListener extends ListenerAdapter {
                         e.printStackTrace();
                     }
                 } else if(event.getChannel().getId().equals(Minecraftdiscordrelay.chatChannelID)) {
-                    Bukkit.broadcastMessage(ChatColor.GRAY + "[" + ChatColor.BLUE + "Discord" + ChatColor.GRAY + " - " + ChatColor.BLUE + event.getAuthor().getName() + ChatColor.GRAY + "]"
-                    + ChatColor.GRAY + ": " + event.getMessage().getContentRaw());
+
+                    String userName = event.getMember().getNickname() == null ? event.getMember().getEffectiveName() : event.getMember().getNickname();
+
+                    Bukkit.broadcastMessage(ChatColor.GRAY + "[" + ChatColor.BLUE + "Discord" + ChatColor.GRAY + "] " + ChatColor.RESET + userName
+                            + ChatColor.GRAY + " » " + ChatColor.RESET + event.getMessage().getContentRaw());
                 }
             }
         }

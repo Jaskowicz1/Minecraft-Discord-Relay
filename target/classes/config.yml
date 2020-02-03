@@ -3,3 +3,6 @@ main:
   consoleChannelID: "changethis"
   chatChannelID: "changethis"
   guildID: "changethis"
+  advancedConsole: false
+  disabledCommands:
+    - help

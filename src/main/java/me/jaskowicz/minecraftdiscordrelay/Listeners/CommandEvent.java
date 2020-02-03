@@ -15,9 +15,17 @@ public class CommandEvent implements Listener {
     @EventHandler
     public void onCommand(PlayerCommandPreprocessEvent event) {
 
-        if (StringUtils.containsIgnoreCase("/stop", event.getMessage())) {
-            Objects.requireNonNull(Objects.requireNonNull(Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)).getTextChannelById(Minecraftdiscordrelay.consoleChannelID))
-                    .sendMessage(":x: Server closing.").queue();
+        if (event.getPlayer().hasPermission("bukkit.command.stop")) {
+            if (StringUtils.containsIgnoreCase("/stop", event.getMessage())) {
+                Objects.requireNonNull(Objects.requireNonNull(Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)).getTextChannelById(Minecraftdiscordrelay.consoleChannelID))
+                        .sendMessage(":x: Server closing.").queue();
+            }
         }
+
+        if(!Minecraftdiscordrelay.advancedConsole) {
+            Objects.requireNonNull(Objects.requireNonNull(Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)).getTextChannelById(Minecraftdiscordrelay.consoleChannelID))
+                    .sendMessage(":exclamation: " + event.getPlayer().getName() + " tried to execute the command: '" + event.getMessage().split(" ")[0] + "'!").queue();
+        }
+
     }
 }

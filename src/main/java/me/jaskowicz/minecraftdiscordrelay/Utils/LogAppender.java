@@ -60,8 +60,10 @@ public class LogAppender extends AbstractAppender {
             if(Minecraftdiscordrelay.serverStarted) {
 
                 if(!Minecraftdiscordrelay.serverClosing) {
-                    Objects.requireNonNull(Objects.requireNonNull(Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)).getTextChannelById(Minecraftdiscordrelay.consoleChannelID))
-                            .sendMessage(message).queue();
+                    if(Minecraftdiscordrelay.advancedConsole) {
+                        Objects.requireNonNull(Objects.requireNonNull(Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)).getTextChannelById(Minecraftdiscordrelay.consoleChannelID))
+                                .sendMessage(message).queue();
+                    }
                 }
             }
         } catch (Exception ex) {

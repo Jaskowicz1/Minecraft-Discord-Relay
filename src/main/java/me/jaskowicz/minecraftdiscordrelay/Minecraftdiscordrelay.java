@@ -1,8 +1,6 @@
 package me.jaskowicz.minecraftdiscordrelay;
 
-import me.jaskowicz.minecraftdiscordrelay.Listeners.ChatListener;
-import me.jaskowicz.minecraftdiscordrelay.Listeners.MessageListener;
-import me.jaskowicz.minecraftdiscordrelay.Listeners.PlayerConnections;
+import me.jaskowicz.minecraftdiscordrelay.Listeners.*;
 import me.jaskowicz.minecraftdiscordrelay.Utils.LogAppender;
 import net.dv8tion.jda.api.AccountType;
 import net.dv8tion.jda.api.JDA;
@@ -21,6 +19,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
 import javax.security.auth.login.LoginException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 public final class Minecraftdiscordrelay extends JavaPlugin {
@@ -38,9 +39,10 @@ public final class Minecraftdiscordrelay extends JavaPlugin {
     public static String guildID = "";
     public static String consoleChannelID = "";
     public static String chatChannelID = "";
-
+    public static List<String> disabledCommands = new ArrayList<>();
     public static boolean serverStarted;
     public static boolean serverClosing;
+    public static boolean advancedConsole = false;
     public static int playersOnline = 0;
 
     @Override
@@ -65,6 +67,10 @@ public final class Minecraftdiscordrelay extends JavaPlugin {
             consoleChannelID = this.getConfig().getString("main.consoleChannelID");
             chatChannelID = this.getConfig().getString("main.chatChannelID");
             guildID = this.getConfig().getString("main.guildID");
+            disabledCommands = this.getConfig().getStringList("main.disabledCommands");
+            advancedConsole = this.getConfig().getBoolean("main.advancedConsole");
+
+            saveConfig();
 
             getLogger().info("Config loaded successfully!");
         }
@@ -75,7 +81,7 @@ public final class Minecraftdiscordrelay extends JavaPlugin {
 
         JDABuilder builder = new JDABuilder(AccountType.BOT);
 
-        for(Player player : Bukkit.getOnlinePlayers()) {
+        for(Player ignored : Bukkit.getOnlinePlayers()) {
             playersOnline += 1;
         }
 
@@ -112,6 +118,8 @@ public final class Minecraftdiscordrelay extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new ChatListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerConnections(), this);
+        getServer().getPluginManager().registerEvents(new OnDeathEvent(), this);
+        getServer().getPluginManager().registerEvents(new CommandEvent(), this);
 
         getLogger().info("Registered Listeners!");
 
