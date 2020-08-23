@@ -33,7 +33,7 @@ public class MessageListener extends ListenerAdapter {
         if (event.getChannelType().equals(ChannelType.TEXT)) {
             if(event.getGuild().getId().equals(Minecraftdiscordrelay.guildID)) {
                 if(event.getChannel().getId().equals(Minecraftdiscordrelay.consoleChannelID)) {
-                    System.out.println(event.getMessage().getContentRaw());
+                    plugin.getLogger().info("Command executed in console channel - " + event.getMessage().getContentRaw());
                     try {
 
                         if(event.getMessage().getContentRaw().equals("stop")) {
@@ -54,7 +54,7 @@ public class MessageListener extends ListenerAdapter {
                     }
                 } else if(event.getChannel().getId().equals(Minecraftdiscordrelay.chatChannelID)) {
 
-                    String userName = event.getMember().getNickname() == null ? event.getMember().getEffectiveName() : event.getMember().getNickname();
+                    String userName = event.getMember().getNickname() == null ? event.getMember().getEffectiveName() : event.getMember().getEffectiveName() + "(" + event.getMember().getNickname() + ")";
 
                     Bukkit.broadcastMessage(ChatColor.GRAY + "[" + ChatColor.BLUE + "Discord" + ChatColor.GRAY + "] " + ChatColor.RESET + userName
                             + ChatColor.GRAY + " » " + ChatColor.RESET + event.getMessage().getContentRaw());

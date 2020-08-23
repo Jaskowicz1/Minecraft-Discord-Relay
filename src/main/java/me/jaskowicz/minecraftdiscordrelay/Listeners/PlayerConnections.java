@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.Objects;
@@ -18,8 +19,8 @@ public class PlayerConnections implements Listener {
         Minecraftdiscordrelay.jda.getPresence().setActivity(Activity.playing(Minecraftdiscordrelay.playersOnline + " players | " + Bukkit.getServer().getVersion()));
 
         if(!Minecraftdiscordrelay.advancedConsole) {
-            Objects.requireNonNull(Objects.requireNonNull(Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)).getTextChannelById(Minecraftdiscordrelay.consoleChannelID))
-                    .sendMessage(":heavy_plus_sign: " + event.getPlayer().getName() + " joined the game!").queue();
+            Objects.requireNonNull(Objects.requireNonNull(Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)).getTextChannelById(Minecraftdiscordrelay.chatChannelID))
+                    .sendMessage(":green_circle: " + event.getPlayer().getName() + " joined the game!").queue();
 
         }
     }
@@ -30,8 +31,20 @@ public class PlayerConnections implements Listener {
         Minecraftdiscordrelay.jda.getPresence().setActivity(Activity.playing(Minecraftdiscordrelay.playersOnline + " players | " + Bukkit.getServer().getVersion()));
 
         if(!Minecraftdiscordrelay.advancedConsole) {
-            Objects.requireNonNull(Objects.requireNonNull(Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)).getTextChannelById(Minecraftdiscordrelay.consoleChannelID))
-                    .sendMessage(":heavy_minus_sign: " + event.getPlayer().getName() + " left the game!").queue();
+            Objects.requireNonNull(Objects.requireNonNull(Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)).getTextChannelById(Minecraftdiscordrelay.chatChannelID))
+                    .sendMessage(":red_circle: " + event.getPlayer().getName() + " left the game!").queue();
+
+        }
+    }
+
+    @EventHandler
+    public void onPlayerLeave(PlayerKickEvent event) {
+        Minecraftdiscordrelay.playersOnline -= 1;
+        Minecraftdiscordrelay.jda.getPresence().setActivity(Activity.playing(Minecraftdiscordrelay.playersOnline + " players | " + Bukkit.getServer().getVersion()));
+
+        if(!Minecraftdiscordrelay.advancedConsole) {
+            Objects.requireNonNull(Objects.requireNonNull(Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)).getTextChannelById(Minecraftdiscordrelay.chatChannelID))
+                    .sendMessage(":red_circle: " + event.getPlayer().getName() + " was kicked from the game!").queue();
 
         }
     }
