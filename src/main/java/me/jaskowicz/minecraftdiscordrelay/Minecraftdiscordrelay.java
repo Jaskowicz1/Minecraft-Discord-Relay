@@ -118,6 +118,7 @@ public final class Minecraftdiscordrelay extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new ChatListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerConnections(), this);
+        getServer().getPluginManager().registerEvents(new OnAchievement(), this);
         getServer().getPluginManager().registerEvents(new OnDeathEvent(), this);
         getServer().getPluginManager().registerEvents(new CommandEvent(), this);
 
