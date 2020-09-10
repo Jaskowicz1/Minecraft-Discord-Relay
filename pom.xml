@@ -6,12 +6,12 @@
 
     <groupId>me.jaskowicz</groupId>
     <artifactId>minecraftdiscordrelay</artifactId>
-    <version>1.1.3</version>
+    <version>1.1.6</version>
     <packaging>jar</packaging>
 
     <name>MinecraftDiscordRelay</name>
 
-    <description>A plugin which allows your server to communicate to discord via webhooks!</description>
+    <description>A plugin which allows your server to communicate to discord via a bot!</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

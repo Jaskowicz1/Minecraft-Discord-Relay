@@ -54,7 +54,7 @@ public class MessageListener extends ListenerAdapter {
                     }
                 } else if(event.getChannel().getId().equals(Minecraftdiscordrelay.chatChannelID)) {
 
-                    String userName = event.getMember().getNickname() == null ? event.getMember().getEffectiveName() : event.getMember().getEffectiveName() + "(" + event.getMember().getNickname() + ")";
+                    String userName = event.getMember().getNickname() == null ? event.getMember().getEffectiveName() : event.getMember().getEffectiveName() + "(" + event.getAuthor().getName() + ")";
 
                     Bukkit.broadcastMessage(ChatColor.GRAY + "[" + ChatColor.BLUE + "Discord" + ChatColor.GRAY + "] " + ChatColor.RESET + userName
                             + ChatColor.GRAY + " » " + ChatColor.RESET + event.getMessage().getContentRaw());

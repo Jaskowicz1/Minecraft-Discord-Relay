@@ -16,9 +16,6 @@ public class LogAppender extends AbstractAppender {
 
     private Plugin plugin = Minecraftdiscordrelay.getPlugin(Minecraftdiscordrelay.class);
 
-    private boolean sentStartupMessage = false;
-    private boolean sentShutdownMessage = false;
-
     public LogAppender() {
         // Says it's deprecated but oh well.
         super("MinecraftDiscordRelayLog", null, null);
@@ -40,11 +37,11 @@ public class LogAppender extends AbstractAppender {
             // \" means " but doesn't close the string.
             if(!Minecraftdiscordrelay.serverStarted) {
 
-                if(!sentStartupMessage) {
+                if(!Minecraftdiscordrelay.sentStartupMessage) {
                     if (Minecraftdiscordrelay.jda.getStatus() == JDA.Status.CONNECTED) {
                         Objects.requireNonNull(Objects.requireNonNull(Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)).getTextChannelById(Minecraftdiscordrelay.consoleChannelID))
                                 .sendMessage(":warning: Server starting...").queue();
-                        sentStartupMessage = true;
+                        Minecraftdiscordrelay.sentStartupMessage = true;
                     }
                 }
 

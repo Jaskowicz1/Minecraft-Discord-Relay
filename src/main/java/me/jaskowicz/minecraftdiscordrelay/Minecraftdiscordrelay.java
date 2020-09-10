@@ -42,6 +42,7 @@ public final class Minecraftdiscordrelay extends JavaPlugin {
     public static List<String> disabledCommands = new ArrayList<>();
     public static boolean serverStarted;
     public static boolean serverClosing;
+    public static boolean sentStartupMessage;
     public static boolean advancedConsole = false;
     public static int playersOnline = 0;
 
@@ -118,11 +119,21 @@ public final class Minecraftdiscordrelay extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new ChatListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerConnections(), this);
-        getServer().getPluginManager().registerEvents(new OnAchievement(), this);
+        //getServer().getPluginManager().registerEvents(new OnAchievement(), this);
         getServer().getPluginManager().registerEvents(new OnDeathEvent(), this);
         getServer().getPluginManager().registerEvents(new CommandEvent(), this);
 
         getLogger().info("Registered Listeners!");
+
+        if(Bukkit.getOnlinePlayers().size() > 0) {
+            // A reload has happened.
+            sentStartupMessage = true;
+            serverStarted = true;
+            Minecraftdiscordrelay.playersOnline = Bukkit.getOnlinePlayers().size();
+            Minecraftdiscordrelay.jda.getPresence().setActivity(Activity.playing(Minecraftdiscordrelay.playersOnline + " players | " + Bukkit.getServer().getVersion()));
+            Objects.requireNonNull(Objects.requireNonNull(Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)).getTextChannelById(Minecraftdiscordrelay.consoleChannelID))
+                    .sendMessage(":white_check_mark: Server Reloaded!").queue();
+        }
 
         getLogger().info("Finished loading Minecraft Discord Relay (MCDR)!");
 
