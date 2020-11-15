@@ -80,13 +80,12 @@ public final class Minecraftdiscordrelay extends JavaPlugin {
 
         getLogger().info("Loading bot...");
 
-        JDABuilder builder = new JDABuilder(AccountType.BOT);
+        JDABuilder builder = JDABuilder.createDefault(discordBotToken);
 
         for(Player ignored : Bukkit.getOnlinePlayers()) {
             playersOnline += 1;
         }
 
-        builder.setToken(discordBotToken);
         builder.addEventListeners(new MessageListener());
         builder.addEventListeners(new ListenerAdapter() {
             @Override

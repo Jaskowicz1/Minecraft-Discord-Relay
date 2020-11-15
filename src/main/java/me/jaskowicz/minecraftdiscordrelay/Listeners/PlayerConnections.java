@@ -19,7 +19,13 @@ public class PlayerConnections implements Listener {
         Minecraftdiscordrelay.jda.getPresence().setActivity(Activity.playing(Minecraftdiscordrelay.playersOnline + " players | " + Bukkit.getServer().getVersion()));
 
         if(!Minecraftdiscordrelay.advancedConsole) {
-            Objects.requireNonNull(Objects.requireNonNull(Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)).getTextChannelById(Minecraftdiscordrelay.chatChannelID))
+
+            // Just to make sure this isn't null.
+            // Turned out it was the bot API out-of-date.
+            // System.out.println(Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID));
+
+            Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)
+                    .getTextChannelById(Minecraftdiscordrelay.chatChannelID)
                     .sendMessage(":green_circle: " + event.getPlayer().getName() + " joined the game!").queue();
 
         }
@@ -31,7 +37,8 @@ public class PlayerConnections implements Listener {
         Minecraftdiscordrelay.jda.getPresence().setActivity(Activity.playing(Minecraftdiscordrelay.playersOnline + " players | " + Bukkit.getServer().getVersion()));
 
         if(!Minecraftdiscordrelay.advancedConsole) {
-            Objects.requireNonNull(Objects.requireNonNull(Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)).getTextChannelById(Minecraftdiscordrelay.chatChannelID))
+            Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)
+                    .getTextChannelById(Minecraftdiscordrelay.chatChannelID)
                     .sendMessage(":red_circle: " + event.getPlayer().getName() + " left the game!").queue();
 
         }
@@ -43,7 +50,8 @@ public class PlayerConnections implements Listener {
         Minecraftdiscordrelay.jda.getPresence().setActivity(Activity.playing(Minecraftdiscordrelay.playersOnline + " players | " + Bukkit.getServer().getVersion()));
 
         if(!Minecraftdiscordrelay.advancedConsole) {
-            Objects.requireNonNull(Objects.requireNonNull(Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)).getTextChannelById(Minecraftdiscordrelay.chatChannelID))
+            Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)
+                    .getTextChannelById(Minecraftdiscordrelay.chatChannelID)
                     .sendMessage(":red_circle: " + event.getPlayer().getName() + " was kicked from the game!").queue();
 
         }

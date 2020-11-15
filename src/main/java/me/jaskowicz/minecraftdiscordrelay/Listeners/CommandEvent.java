@@ -24,7 +24,7 @@ public class CommandEvent implements Listener {
 
         if(!Minecraftdiscordrelay.advancedConsole) {
             Objects.requireNonNull(Objects.requireNonNull(Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)).getTextChannelById(Minecraftdiscordrelay.consoleChannelID))
-                    .sendMessage(":exclamation: " + event.getPlayer().getName() + " tried to execute the command: '" + event.getMessage().split(" ")[0] + "'!").queue();
+                    .sendMessage(":exclamation: " + event.getPlayer().getName() + " executed the command: '" + event.getMessage().split(" ")[0] + "'!").queue();
         }
 
     }

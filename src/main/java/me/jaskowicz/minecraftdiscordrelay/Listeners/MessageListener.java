@@ -34,8 +34,8 @@ public class MessageListener extends ListenerAdapter {
             if(event.getGuild().getId().equals(Minecraftdiscordrelay.guildID)) {
                 if(event.getChannel().getId().equals(Minecraftdiscordrelay.consoleChannelID)) {
                     plugin.getLogger().info("Command executed in console channel - " + event.getMessage().getContentRaw());
-                    try {
 
+                    try {
                         if(event.getMessage().getContentRaw().equals("stop")) {
                             Objects.requireNonNull(Objects.requireNonNull(Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)).getTextChannelById(Minecraftdiscordrelay.consoleChannelID))
                                     .sendMessage(":x: Server closing.").queue();
@@ -48,7 +48,19 @@ public class MessageListener extends ListenerAdapter {
                             return;
                         }
 
-                        boolean success = Bukkit.getScheduler().callSyncMethod( plugin, () -> Bukkit.dispatchCommand( Bukkit.getConsoleSender(), event.getMessage().getContentRaw() ) ).get();
+                        boolean success = Bukkit.getScheduler().callSyncMethod(plugin, () ->
+                                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), event.getMessage().getContentRaw())
+                        ).get();
+
+                        if(success) {
+                            Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)
+                                    .getTextChannelById(Minecraftdiscordrelay.consoleChannelID)
+                                    .sendMessage("Command executed successfully.").queue();
+                        } else {
+                            Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)
+                                    .getTextChannelById(Minecraftdiscordrelay.consoleChannelID)
+                                    .sendMessage("Command executed un-successfully.").queue();
+                        }
                     } catch (ExecutionException | InterruptedException e) {
                         e.printStackTrace();
                     }

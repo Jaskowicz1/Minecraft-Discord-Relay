@@ -13,7 +13,8 @@ public class OnDeathEvent implements Listener {
     @EventHandler
     public void onPlayerDeathEvent(PlayerDeathEvent event) {
         if(!Minecraftdiscordrelay.advancedConsole) {
-            Objects.requireNonNull(Objects.requireNonNull(Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)).getTextChannelById(Minecraftdiscordrelay.chatChannelID))
+            Minecraftdiscordrelay.jda.getGuildById(Minecraftdiscordrelay.guildID)
+                    .getTextChannelById(Minecraftdiscordrelay.chatChannelID)
                     .sendMessage(":skull_crossbones: " + event.getDeathMessage()).queue();
 
         }

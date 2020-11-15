@@ -6,3 +6,7 @@ prefix: MinecraftDiscordRelay(MCDR)
 load: STARTUP
 authors: [ArchieJaskowicz]
 description: A plugin which allows your server to communicate to discord!
+
+commands:
+  testchannels:
+    description: A command which allows you to test your bot!
